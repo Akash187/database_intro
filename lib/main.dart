@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:database_intro/utils/database_helper.dart';
 import 'package:database_intro/modals/user.dart';
+import 'package:flutter/services.dart';
 
 List _user;
 var db = new DatabaseHelper();
@@ -15,11 +16,14 @@ void main() async {
     print("Name : ${user.username}");
   }
 
-  runApp(new MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: "Database",
-    home: new Home(),
-  ));
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(new MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Database",
+      home: new Home(),
+    ));
+  });
 }
 
 class Home extends StatefulWidget {
